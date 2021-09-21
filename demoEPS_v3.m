@@ -8,8 +8,8 @@ m = 10; %mass (kg), this parameter does not have any impact
 a = 6678; %semimajor axis (km)
 e = 0.001; %eccentricity
 i = 51.6; %inclination (degrees)
-O = 300; %Right ascension of the right ascending node (degrees) %max 197, min 300.5 %21/3 181  300
-o = 90; %Argument of the perigee (degrees)                      %max  90,    min 0   %21/3 90  90
+O = 181; %Right ascension of the right ascending node (degrees) %max 197,    %21/3 min 181 ok 300
+o = 90; %Argument of the perigee (degrees)                      %max  90,    %21/3 min 90  ok 90
 nu = 0; %True anomaly (degrees)
 %Initialisation of date
 year = 2020;
@@ -41,6 +41,7 @@ Pload2=2;           %Required power OBC [W]
 Pload3=2.5;         %Required power ADCS w/o RWA [W]
 Pload4=1.7;         %Required power Com (Rx)[W]
 
+eff_iBat=0.95;      %efficiency from Battery to load
 eff_i1=0.9;         %efficiency PDU CH not regulated
 eff_i2=0.85;        %efficiency PDU CH 3.3V
 
@@ -82,6 +83,7 @@ Pcollected = getdatasamples(Power.Psa1,(1:length(time)));
 beta = getdatasamples(Power.beta,(1:length(time)));
 Ploads = getdatasamples(E.LOAD,(1:length(time)));
 
+%get charge and discharge currents
 ibc=zeros(length(time),1);
 ibd=zeros(length(time),1);
 for i=1:length(time)
@@ -161,8 +163,12 @@ subplot(2,2,2)
         grid on
 subplot(2,2,4)
         plot(time,ibd,'b','LineWidth',1)
+        yline(1.04, 'b--', 'LineWidth', 1);
+        yline(0.52, 'g--', 'LineWidth', 1);
+        yline(2.08, 'r--', 'LineWidth', 1);
+        yline(3.46, 'm--', 'LineWidth', 1);
         hold on;
-        legend('Discharge Current [A]')
+        legend('Discharge Current [A]','C/10','C/20','C/5','C/3')
         title('4S 4P Battery Discharge Current')
         ylabel('Current [A]')
         xlabel('time in minutes')

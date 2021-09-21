@@ -1,4 +1,4 @@
-function [eclipse] = eclipse_check(u)
+function [eclipse] = eclipse_checktest(u)
 %Checks if the satellite is in eclipse
 % Inputs:
 % u(1:3)= position of the satellite in ECI
@@ -8,6 +8,9 @@ function [eclipse] = eclipse_check(u)
 %         out=0: S/C in illumination
 
 %Defining the frames xyz=inertial XYZ=z pointing to sun
+% x=[1;0;0];
+% y=[0;1;0];
+% z=[0;0;1];
 Z=u(4:6);
 if Z==[0;0;0]
     X=[1;0;0];
@@ -36,3 +39,21 @@ if c<0
 else
     eclipse=1;
 end
+
+% 
+% 
+% if ((b^2)+(a^2))<4.0678884e+13
+%     if c<0
+%         eclipse=0;
+%     else
+%         eclipse=1;
+%     end
+% else
+%     eclipse=1;
+% end
+
+%c2 + a2 < R2 ; b<0 not working original
+%c2 + a2 < R2 ; b<0 not working 
+%b2 + a2 < R2 ; c<0 not working
+%b2 + a2 < R2 ; c>0 not working for power
+%b2 + c2 < R2 ; a<0 not working
