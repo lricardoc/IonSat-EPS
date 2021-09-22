@@ -65,11 +65,11 @@ I_BC_max= 3;        %Maximum charge current [A] approx. C/3.5
 % Vcrit=13;       %critical battery voltage
 
 
-EPS_orbit_v1a
-Power=sim('EPS_orbit_v1a');
+EPS_orbit_v1a_R19a
+Power=sim('EPS_orbit_v1a_R19a');
 
-EPS_sim_test_v3
-E=sim('EPS_sim_test_v3');
+EPS_sim_test_v3_R19a
+E=sim('EPS_sim_test_v3_R19a');
 
 
 %% data for Plots
