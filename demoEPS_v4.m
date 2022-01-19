@@ -5,7 +5,7 @@ m = 10; %mass (kg), this parameter does not have any impact
 
 %Initialisation of Keplerian parameters
 %modifying RAAN (O), arg. of perigee (o) and date, different beta values can be found.
-a = 6971; %semimajor axis (km)
+a = 6671; %semimajor axis (km)
 e = 0.001; %eccentricity
 i = 98; %inclination (deg)
 O = 30; %Right ascension of the ascending node (deg) 
@@ -25,7 +25,7 @@ minutes = 0;
 seconds = 0;
 
 %Duration of the simulation
-N_orbits = 15;
+N_orbits = 5;
 Torb=2*pi*sqrt(a^3/(3.986004418E5));
 tsimulation=N_orbits*Torb;
 delta_t = 1; %simulation time step (seconds)
