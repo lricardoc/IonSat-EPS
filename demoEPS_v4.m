@@ -42,10 +42,14 @@ Pload1=50;          %Required power Thruster [W]
 t_on=3000;          %time thruster is ON [seconds]
 t_wait=27e3;        %time waiting between 2 firings [seconds]
 Duty_cycle=t_on/(t_on+t_wait)*100;
+T_thrust = 50 %Minutes, total time of thrust (without heating of the thruster)
 %t_thr=[0, Torbit-501,Torbit-500, Torbit-300, Torbit-299,Torbit-250,Torbit-249,Torbit-50,Torbit-49, Torbit+1, (Torbit*1.5),(Torbit*1.5)+1, 2*Torbit,3*Torbit];
 %p_thr=[0.32 0.32 60 60 0.32 0.32  40 40 0.32 Pload1 Pload1 0.32 0.32 0.32];
-t_thr=[0,   Torb-501,Torb-500,Torb-300,Torb-299,Torb-250,Torb-249,Torb-50,Torb-49,Torb+1,(Torb+t_on),(Torb+t_on)+1,(Torb+t_on)+t_wait];
-p_thr=[0.32,0.32,    60,      60,      0.32,    0.32,    40,      40,     0.32,   Pload1, Pload1,     0.32,        0.32];
+%t_thr=[0,   Torb-501,Torb-500,Torb-300,Torb-299,Torb-250,Torb-249,Torb-50,Torb-49,Torb+1,(Torb+t_on),(Torb+t_on)+1,(Torb+t_on)+t_wait];
+%p_thr=[0.32,0.32,    60,      60,      0.32,    0.32,    40,      40,     0.32,   Pload1, Pload1,     0.32,        0.32];
+t_thr=[0, 3*60-1, 3*60, 3*60+1, 8*60, 13*60, 21*60, 41*60, (3+T_thrust)*60, (3+T_thrust)*60+1, Torb]
+p_thr=[25, 15, 3, 60, 60, 20, 60, 50, 50, 0, 0]
+
 %subsystem loads
 Pload2=3;           %Required power OBC [W]
 eff_OBC=0.95;       %efficiency CH OBC
@@ -53,9 +57,9 @@ Pload3=4.5;           %Required power ADCS w/o RWA [W]
 eff_ADCS=0.92;      %efficiency CH ADCS
 Pload4=1.7;         %Required power Com (Rx)[W]
 PtxCOM=1.57;        %power if tx every orbit
-P_Tx=12+3.3;
+P_Tx=2.9;
 t_wait_Tx=4*Torb;
-p_tx=[0 0        P_Tx   P_Tx       0          0];
+p_tx=[0.42 0.42        P_Tx   P_Tx       0.42          0.42];
 t_tx=[0 Torb/2-1 Torb/2 Torb/2+600 Torb/2+601 Torb/2+601+t_wait_Tx];
 eff_COM=0.94;       %efficiency CH ADCS
 Pload5=0.26;        %Required power GPS rx [W]
@@ -90,7 +94,7 @@ EPS_orbit_v1a_R19a
 Power=sim('EPS_orbit_v1a_R19a');
 
 EPS_sim_test_v4_R19a
-E=sim('EPS_sim_test_v4_R19a');
+E=sim('EPS_sim_test_v5_R19a');
 
 
 %% processing data for Plots

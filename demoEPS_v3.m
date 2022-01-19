@@ -37,9 +37,9 @@ C=Cbat*Nbp*3600;    %Battery Capacity for all parallel arrays [Ampere*sec]
 %Loads
 Pload1=50;          %Required power Thruster [W]
 %iLoad=2;     %to test, in [A]
-Pload2=2;           %Required power OBC [W]
-Pload3=2.5;         %Required power ADCS w/o RWA [W]
-Pload4=1.7;         %Required power Com (Rx)[W]
+%Pload2=2;           Required power OBC [W]
+%Pload3=2.5;         %Required power ADCS w/o RWA [W]
+%Pload4=1.7;         %Required power Com (Rx)[W]
 
 eff_iBat=0.95;      %efficiency from Battery to load
 eff_i1=0.9;         %efficiency PDU CH not regulated
@@ -47,7 +47,7 @@ eff_i2=0.85;        %efficiency PDU CH 3.3V
 
 %Power Generation
 Psa=48;             %Peak power generation [W]
-eff_ACU=0.85;       %efficiency ACU conversion
+eff_ACU=0.9;       %efficiency ACU conversion
 P_eps=0.6;          %internal power consumption EPS [W]
 
 %Battery
