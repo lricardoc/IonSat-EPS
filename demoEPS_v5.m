@@ -25,7 +25,7 @@ minutes = 0;
 seconds = 0;
 
 %Duration of the simulation
-N_orbits = 5;
+N_orbits = 15;
 Torb=2*pi*sqrt(a^3/(3.986004418E5));
 tsimulation=N_orbits*Torb;
 delta_t = 1; %simulation time step (seconds)
@@ -39,32 +39,62 @@ C=Cbat*Nbp*3600;    %Battery Capacity for all parallel arrays [Ampere*sec]
 %LOADS
 %thruster required power
 Pload1=50;          %Required power Thruster [W]
-t_on=3000;          %time thruster is ON [seconds]
-t_wait=27e3;        %time waiting between 2 firings [seconds]
-Duty_cycle=t_on/(t_on+t_wait)*100;
+%T_thrust=3000;          %time thruster is ON [seconds]
+t0_Th=30*60;        %Time wait before first use of the Thruster;
+t_rech=27e3;        %time waiting between 2 firings, recharging [seconds]
+t_heat=20*60;       %time heating thruster: 20 minutes [s]
 T_thrust = 50; %Minutes, total time of thrust (without heating of the thruster)
-%t_thr=[0, Torbit-501,Torbit-500, Torbit-300, Torbit-299,Torbit-250,Torbit-249,Torbit-50,Torbit-49, Torbit+1, (Torbit*1.5),(Torbit*1.5)+1, 2*Torbit,3*Torbit];
-%p_thr=[0.32 0.32 60 60 0.32 0.32  40 40 0.32 Pload1 Pload1 0.32 0.32 0.32];
-%t_thr=[0,   Torb-501,Torb-500,Torb-300,Torb-299,Torb-250,Torb-249,Torb-50,Torb-49,Torb+1,(Torb+t_on),(Torb+t_on)+1,(Torb+t_on)+t_wait];
-%p_thr=[0.32,0.32,    60,      60,      0.32,    0.32,    40,      40,     0.32,   Pload1, Pload1,     0.32,        0.32];
-t_thr=[0, 3*60-1, 3*60, 3*60+1, 8*60, 13*60, 21*60, 41*60, (3+T_thrust)*60, (3+T_thrust)*60+1, Torb];
-p_thr=[25, 15, 3, 60, 60, 20, 60, 50, 50, 0, 0];
+t_on=T_thrust*60;
+Duty_cycle=t_on/(t_on+t_rech+t_heat)*100;  %Duty cycle thrust
+t_thr=[0,    t0_Th-1, t0_Th, t0_Th+3*60-1, t0_Th+3*60, t0_Th+3*60+1, t0_Th+8*60, t0_Th+13*60, t0_Th+21*60, t0_Th+41*60, t0_Th+(t_heat/60+T_thrust)*60, t0_Th+(t_heat/60+T_thrust)*60+1, t_on+t_rech+t_heat];
+p_thr=[0.32,  0.32,    25,     15,              3,           60,           60,          20,          60,         50,                    50,                      0.32,               0.32];
 
 %subsystem loads
-Pload2=3;           %Required power OBC [W]
-eff_OBC=0.95;       %efficiency CH OBC
-Pload3=4.5;           %Required power ADCS w/o RWA [W]
-eff_ADCS=0.92;      %efficiency CH ADCS
-Pload4=1.7;         %Required power Com (Rx)[W]
-PtxCOM=1.57;        %power if tx every orbit
-P_Tx=2.9;
-t_wait_Tx=4*Torb;
-p_tx=[0.42 0.42        P_Tx   P_Tx       0.42          0.42];
-t_tx=[0 Torb/2-1 Torb/2 Torb/2+600 Torb/2+601 Torb/2+601+t_wait_Tx];
-eff_COM=0.94;       %efficiency CH ADCS
-Pload5=0.26;        %Required power GPS rx [W]
-eff_GNSS=0.85;      %efficiency CH GNSS
-P_heater=3;         %Required power heater [W]
+P_OBC=2.15;          %Required power OBC [W]
+eff_OBC=0.94;        %efficiency CH OBC
+EN_OBC=1;            %OBC Enabled=1, disabled=0
+
+%ADCS divided in 3 groups
+P_ADC=0.55;          %power consumption by sensors and eq. at 3.3V
+eff_ADC1=0.6;        %Efficiency CH ADCS 1 3.3V
+EN_ADCS1=1;          %ADCS 3.3V Enabled=1, disabled=0
+
+P_MTQ=1.2;           %power consumption by MTQ at 5V
+eff_MTQ=0.91;        %Efficiency CH ADCS 2 5V
+EN_MTQ=1;            %ADCS 5V Enabled=1, disabled=0
+
+P_RWA=0.6;          %power consumption by sensors and eq. at 3.3V
+eff_RWA=0.3;         %Efficiency CH ADCS 1 3.3V
+EN_RWA=1;            %ADCS 3.3V Enabled=1, disabled=0
+
+% Pload3=4.5;          %Required power ADCS w/o RWA [W]
+% eff_ADCS=0.92;       %efficiency CH ADCS
+
+%Com subsystem
+t0_tx=Torb/2+600;   %20 minutes after half orbit [s]
+%P_Rx=0.29;          %Required power Com (Rx)[W]
+P_Rx=0.42;           %Required power Com (Rx)[W]
+%PtxCOM=1.57;        %power if tx every orbit (average)
+P_Tx=2.7+P_Rx;       %Peak power UHF [W]
+t_wait_Tx=4*Torb;    %Waiting time before Transmission [s]
+p_tx_UHF=[P_Rx P_Rx        P_Tx   P_Tx       P_Rx          P_Rx];
+t_tx_UHF=[0    t0_tx-1    t0_tx  t0_tx+600 t0_tx+601    t0_tx+601+t_wait_Tx];
+eff_UHF=0.94;        %efficiency CH COM
+EN_UHF=1;            %TRx UHF enabled=1
+
+P_Rx_S=1.5;          %Required power Com S band (Rx) [W]
+P_Tx_S=10;           %Peak power Com S band [W]
+p_tx_S=[P_Rx_S P_Rx_S   P_Tx_S   P_Tx_S       P_Rx_S      P_Rx_S];
+t_tx_S=[0      t0_tx-1  t0_tx    t0_tx+600    t0_tx+601   t0_tx+601+t_wait_Tx];
+eff_S=0.98;          %efficiency CH COM
+EN_S=1;              %S band TP enabled=1
+
+P_GPS=0.225;        %Required power GPS [W]
+eff_GPS=0.94;       %efficiency CH GPS
+EN_GPS=1;           %GPS Enabled=1, disabled=0
+
+P_heater=2*3;       %Required power heater [W], 2 heaters\
+EN_heat=0;          %Heaters batt Enabled=1, disabled=0
 
 eff_iBat=0.95;      %efficiency from Battery to load
 eff_i1=0.9;         %efficiency PDU CH not regulated
@@ -73,11 +103,10 @@ eff_i2=0.85;        %efficiency PDU CH 3.3V
 %Power Generation
 Psa=48;             %Peak power generation [W]
 eff_ACU=0.85;       %efficiency ACU conversion
-P_eps=0.6;          %internal power consumption EPS [W]
+P_eps=1.2;          %internal power consumption EPS [W]
 
 %Battery
 DOD_0=0;            %initial DOD from 0 to 1
-%iB=2;   %to test in [A]
 
 %Charge/Discharge logic
 I_BD_max= 5;        %Maximum discharge current [A] approx. C/2
@@ -93,8 +122,10 @@ I_BC_max= 3;        %Maximum charge current [A] approx. C/3.5
 EPS_orbit_v1a_R19a
 Power=sim('EPS_orbit_v1a_R19a');
 
-EPS_sim_test_v4_R19a
+EPS_sim_test_v5_R19a
+%EPS_sim_test_v5
 E=sim('EPS_sim_test_v5_R19a');
+%E=sim('EPS_sim_test_v5');
 
 
 %% processing data for Plots
