@@ -37,13 +37,12 @@ Nbp=4;
 C=Cbat*Nbp*3600;    %Battery Capacity for all parallel arrays [Ampere*sec]
 
 %LOADS
-%thruster required power
+%Thruster required power
 Pload1=50;          %Required power Thruster [W]
-%T_thrust=3000;          %time thruster is ON [seconds]
 t0_Th=30*60;        %Time wait before first use of the Thruster;
 t_rech=27e3;        %time waiting between 2 firings, recharging [seconds]
 t_heat=20*60;       %time heating thruster: 20 minutes [s]
-T_thrust = 50; %Minutes, total time of thrust (without heating of the thruster)
+T_thrust = 50;      %Minutes, total time of thrust (without heating of the thruster)
 t_on=T_thrust*60;
 Duty_cycle=t_on/(t_on+t_rech+t_heat)*100;  %Duty cycle thrust
 t_thr=[0,    t0_Th-1, t0_Th, t0_Th+3*60-1, t0_Th+3*60, t0_Th+3*60+1, t0_Th+8*60, t0_Th+13*60, t0_Th+21*60, t0_Th+41*60, t0_Th+(t_heat/60+T_thrust)*60, t0_Th+(t_heat/60+T_thrust)*60+1, t_on+t_rech+t_heat];
@@ -63,7 +62,7 @@ P_MTQ=1.2;           %power consumption by MTQ at 5V
 eff_MTQ=0.91;        %Efficiency CH ADCS 2 5V
 EN_MTQ=1;            %ADCS 5V Enabled=1, disabled=0
 
-P_RWA=0.6;          %power consumption by sensors and eq. at 3.3V
+P_RWA=0.6;           %power consumption by sensors and eq. at 3.3V
 eff_RWA=0.3;         %Efficiency CH ADCS 1 3.3V
 EN_RWA=1;            %ADCS 3.3V Enabled=1, disabled=0
 
@@ -71,7 +70,7 @@ EN_RWA=1;            %ADCS 3.3V Enabled=1, disabled=0
 % eff_ADCS=0.92;       %efficiency CH ADCS
 
 %Com subsystem
-t0_tx=Torb/2+600;   %20 minutes after half orbit [s]
+t0_tx=Torb/2+600;    %20 minutes after half orbit [s]
 %P_Rx=0.29;          %Required power Com (Rx)[W]
 P_Rx=0.42;           %Required power Com (Rx)[W]
 %PtxCOM=1.57;        %power if tx every orbit (average)
