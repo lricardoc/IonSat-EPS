@@ -1,3 +1,4 @@
+%% first attempts, not used anymore
 t_heat=20*60; %heat time in seconds
 t_thrust=50*60; %thrust time in seconds
 %t_charge=22500:500:45000; %heat time in seconds
@@ -63,9 +64,6 @@ legend('Power function of duty cycle','Power generated 300km β=25°','Power gen
 % title('Platform power average consumption per orbit')
 % legend('Power function of duty cycle','Power generated 300km β=25°','Power generated 300km β=35°','Power generated 300km β=45°','Power generated 300km β=50°')
 
-
-
-
 powerbeta=fit(Pav',B','cubicinterp'); %
 %plot(powerbeta,B,Pav)
 plot(powerbeta)
@@ -89,7 +87,7 @@ ylabel('Power Average [W]')
 xlabel('Beta [deg]')
 grid on
 
-%% second plot
+%% second plot (not used anymore)
 t_heat=20*60; %heat time in seconds
 t_thrust=50*60; %thrust time in seconds
 %t_charge=22500:500:45000; %heat time in seconds
@@ -121,7 +119,7 @@ legend('Power function of duty cycle','Power generated 300km β=20°','Power gen
 %% Plots for Orbit report
 clear
 
-t_heat=20*60; %heat time in seconds
+t_heat=16*60; %heat time in seconds
 t_thrust=50*60; %thrust time in seconds
 %t_charge=22500:500:45000; %recharge batteries time in seconds
 t_charge=20000:50:45000; %recharge batteries time in seconds
@@ -198,6 +196,7 @@ subplot(2,2,4)
     legend('Beta required as function of duty cycle','β angle with Power generated = 22W','β angle with Power generated = 24W','β angle with Power generated = 26W' )
 
 %From a certain power consumption: know what is the required BETA
+figure()
 set(gcf,'color','w');
     plot(P_bus,B_Pbus_required)
     hold on
@@ -213,7 +212,7 @@ set(gcf,'color','w');
 %% Plots to send Jerome
 clear
 
-t_heat=20*60; %heat time in seconds
+t_heat=16*60; %heat time in seconds
 t_thrust=50*60; %thrust time in seconds
 %t_charge=22500:500:45000; %recharge batteries time in seconds
 t_charge=10000:50:300000; %recharge batteries time in seconds
@@ -303,6 +302,11 @@ set(gcf,'color','w');
     title('Minimum Beta required for bus power consumption at 300 km')
     legend('Beta required as function of duty cycle','β angle with Power generated = 22W','β angle with Power generated = 24W','β angle with Power generated = 26W' )
 
+    
+    
+    
+    
+    
     
 %% OK to plot beta and other angles for ISS orbit
 % filename = 'ISSbeta.txt';

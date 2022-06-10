@@ -30,6 +30,36 @@ Torb=2*pi*sqrt(a^3/(3.986004418E5));
 tsimulation=N_orbits*Torb;
 delta_t = 1; %simulation time step (seconds)
 
+%POINTING MODE
+MODE = 2;   %"sun-aero" pointing mode
+% 1: "orbital" Reference quaternion is aligned with ORF. 
+% 2: "sun-aero" Reference quaternion is such that x is aligned with velocity 
+%and z is aligned as best as possible with the sun direction to maximize the power generation 
+% 3: "sun pointing" Reference quaternion is such that z is aligned with with 
+%the sun direction to maximize the power generation and x is aligned as best 
+%as possible with the velocity direction. 
+% 4: "aero-drag" Reference quaternion is similar than in Case 1, but rotated 
+%90° along the y axis, therefore, the reference quaternion is an attitude for 
+%maximizing the drag surface. 
+% 5: "retrogade firing" Reference quaternion is similar than in Case 1, but 
+%rotated 180° along the z axis, therefore, the reference quaternion is an 
+%attitude for retrograde propulsion. (??should be like case 2 but rotated?)
+% 6: Reference quaternion is static [1 0 0 0], but this time is the only case 
+%where the state of the B-dot is enabled (1). 
+% 7: Reference quaternion is a custom quaternion that has to be defined by the 
+%user as an input to the mission block. 
+
+%Power Generation
+deployed=1;         %1 if deployed 0 if not
+if deployed==1
+    Psa=20*2.4;     %Peak power generation +Z side[W] 20 solar cells
+else
+    Psa=8*2.4;      %Peak power generation +Z side[W] 8 solar cells
+end
+Psa_Z=3*2.4;        %Peak power generation -Z side[W] 8 solar cells
+eff_ACU=0.85;       %efficiency ACU conversion
+P_eps=1.2;          %internal power consumption EPS [W]
+
 %Battery configuration
 Cbat=2.6;           %Cell capacity in [Ah]
 Nbs=4;
@@ -38,10 +68,11 @@ C=Cbat*Nbp*3600;    %Battery Capacity for all parallel arrays [Ampere*sec]
 
 %LOADS
 %Thruster required power
+EN_Thr=1;           %Thruster Enabled=1, disabled=0
 Pload1=50;          %Required power Thruster [W]
 t0_Th=30*60;        %Time wait before first use of the Thruster;
-t_rech=27e3;        %time waiting between 2 firings, recharging [seconds]
-t_heat=20*60;       %time heating thruster: 20 minutes [s]
+t_rech=27e3;        %time waiting between 2 firings, recharging [seconds], ONLY MODIFY THIS ONE
+t_heat=16*60;       %time heating thruster: 16 minutes, in [s]
 T_thrust = 50;      %Minutes, total time of thrust (without heating of the thruster)
 t_on=T_thrust*60;
 Duty_cycle=t_on/(t_on+t_rech+t_heat)*100;  %Duty cycle thrust
@@ -49,27 +80,28 @@ t_thr=[0,    t0_Th-1, t0_Th, t0_Th+3*60-1, t0_Th+3*60, t0_Th+3*60+1, t0_Th+8*60,
 p_thr=[0.32,  0.32,    25,     15,              3,           60,           60,          20,          60,         50,                    50,                      0.32,               0.32];
 
 %subsystem loads
+EN_OBC=1;            %OBC Enabled=1, disabled=0
 P_OBC=2.15;          %Required power OBC [W]
 eff_OBC=0.94;        %efficiency CH OBC
-EN_OBC=1;            %OBC Enabled=1, disabled=0
 
 %ADCS divided in 3 groups
+EN_ADCS1=1;          %ADCS 3.3V Enabled=1, disabled=0
 P_ADC=0.55;          %power consumption by sensors and eq. at 3.3V
 eff_ADC1=0.6;        %Efficiency CH ADCS 1 3.3V
-EN_ADCS1=1;          %ADCS 3.3V Enabled=1, disabled=0
 
+EN_MTQ=1;            %ADCS 5V Enabled=1, disabled=0
 P_MTQ=1.2;           %power consumption by MTQ at 5V
 eff_MTQ=0.91;        %Efficiency CH ADCS 2 5V
-EN_MTQ=1;            %ADCS 5V Enabled=1, disabled=0
 
+EN_RWA=1;            %ADCS 3.3V Enabled=1, disabled=0
 P_RWA=0.6;           %power consumption by sensors and eq. at 3.3V
 eff_RWA=0.3;         %Efficiency CH ADCS 1 3.3V
-EN_RWA=1;            %ADCS 3.3V Enabled=1, disabled=0
 
 % Pload3=4.5;          %Required power ADCS w/o RWA [W]
 % eff_ADCS=0.92;       %efficiency CH ADCS
 
 %Com subsystem
+EN_UHF=1;            %TRx UHF enabled=1
 t0_tx=Torb/2+600;    %20 minutes after half orbit [s]
 %P_Rx=0.29;          %Required power Com (Rx)[W]
 P_Rx=0.42;           %Required power Com (Rx)[W]
@@ -79,30 +111,25 @@ t_wait_Tx=4*Torb;    %Waiting time before Transmission [s]
 p_tx_UHF=[P_Rx P_Rx        P_Tx   P_Tx       P_Rx          P_Rx];
 t_tx_UHF=[0    t0_tx-1    t0_tx  t0_tx+600 t0_tx+601    t0_tx+601+t_wait_Tx];
 eff_UHF=0.94;        %efficiency CH COM
-EN_UHF=1;            %TRx UHF enabled=1
 
+EN_S=0;              %S band TP enabled=1
 P_Rx_S=1.5;          %Required power Com S band (Rx) [W]
 P_Tx_S=10;           %Peak power Com S band [W]
 p_tx_S=[P_Rx_S P_Rx_S   P_Tx_S   P_Tx_S       P_Rx_S      P_Rx_S];
 t_tx_S=[0      t0_tx-1  t0_tx    t0_tx+600    t0_tx+601   t0_tx+601+t_wait_Tx];
 eff_S=0.98;          %efficiency CH COM
-EN_S=1;              %S band TP enabled=1
 
+EN_GPS=0;           %GPS Enabled=1, disabled=0
 P_GPS=0.225;        %Required power GPS [W]
 eff_GPS=0.94;       %efficiency CH GPS
-EN_GPS=1;           %GPS Enabled=1, disabled=0
 
-P_heater=2*3;       %Required power heater [W], 2 heaters\
 EN_heat=0;          %Heaters batt Enabled=1, disabled=0
+P_heater=2*3;       %Required power heater [W], 2 heaters\
 
+%Power distribution efficiencies
 eff_iBat=0.95;      %efficiency from Battery to load
 eff_i1=0.9;         %efficiency PDU CH not regulated
 eff_i2=0.85;        %efficiency PDU CH 3.3V
-
-%Power Generation
-Psa=48;             %Peak power generation [W]
-eff_ACU=0.85;       %efficiency ACU conversion
-P_eps=1.2;          %internal power consumption EPS [W]
 
 %Battery
 DOD_0=0;            %initial DOD from 0 to 1
@@ -118,13 +145,15 @@ I_BC_max= 3;        %Maximum charge current [A] approx. C/3.5
 % Vcrit=13;       %critical battery voltage
 
 
-EPS_orbit_v1a_R19a
-Power=sim('EPS_orbit_v1a_R19a');
+%EPS_orbit_v1a_R19a
+EPS_orbit_v2
+%Power=sim('EPS_orbit_v1a_R19a');
+Power=sim('EPS_orbit_v2');
 
-EPS_sim_test_v5_R19a
-%EPS_sim_test_v5
-E=sim('EPS_sim_test_v5_R19a');
-%E=sim('EPS_sim_test_v5');
+%EPS_sim_test_v5_R19a
+EPS_sim_test_v5
+%E=sim('EPS_sim_test_v5_R19a');
+E=sim('EPS_sim_test_v5');
 
 
 %% processing data for Plots
@@ -171,7 +200,11 @@ set(gcf,'color','w');
         plot(time,Ploads,'b','LineWidth',1)
         hold on;
         legend('All Power Requested by Loads [W]')
-        title(['Power Loads with Thruster Duty Cycle: ',num2str(Duty_cycle),'%'])
+        if EN_Thr==1
+            title(['Power Loads with Thruster Duty Cycle: ',num2str(Duty_cycle),'%'])
+        else
+            title(['Power Loads'])
+        end
         ylabel('Power [W]')
         xlabel('time in minutes')
         %ylim([0,22])
