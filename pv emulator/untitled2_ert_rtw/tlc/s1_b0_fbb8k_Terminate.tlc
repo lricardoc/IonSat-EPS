@@ -1,0 +1,23 @@
+%implements s1_b0_fbb8k_Terminate "C"
+
+%function Terminate(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+/* {S!d12}Terminate for MATLABSystem: '<Root>/PWM' */
+if (!untitled2_DW.obj.matlabCodegenIsDeleted) {
+    untitled2_DW.obj.matlabCodegenIsDeleted = true;
+    %<(SLibCGCallSubFcn("untitled2_SystemCore_release", ["&untitled2_DW.obj"], 0, 4, 0))>;
+}
+/* {E!d12}End of Terminate for MATLABSystem: '<Root>/PWM' */
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function TerminateFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Terminate(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 4, fcnProtoType)>
+%endfunction

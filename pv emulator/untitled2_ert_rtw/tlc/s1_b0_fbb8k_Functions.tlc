@@ -1,0 +1,27 @@
+%implements s1_b0_fbb8k_Functions "C"
+
+%function untitled2_SystemCore_release_Fcn0(block) void
+%assign fcnBuff = ""
+%openfile fcnBuff
+%assign cfgTxt = ""
+%openfile cfgTxt
+if ((obj->isInitialized == 1L) && obj->isSetupComplete) {
+    obj->MW_PWM_HANDLE = MW_PWM_GetHandle(obj->PinPWM);
+    MW_PWM_SetDutyCycle(obj->MW_PWM_HANDLE, -0.0);
+    obj->MW_PWM_HANDLE = MW_PWM_GetHandle(obj->PinPWM);
+    MW_PWM_Close(obj->MW_PWM_HANDLE);
+}
+%closefile cfgTxt
+%<cfgTxt>
+%closefile fcnBuff
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void untitled2_SystemCore_release(\
+%assign comma = ""
+%<comma>codertarget_arduinobase_inter_T *obj\
+%assign comma = ", "
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 0, fcnProtoType)>
+%return fcnBuff
+%endfunction
+
