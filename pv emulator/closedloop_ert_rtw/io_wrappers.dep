@@ -1,0 +1,65 @@
+io_wrappers.o: \
+ C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/io_wrappers.cpp \
+ C:/ProgramData/MATLAB/SupportPackages/R2020b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/cores/arduino/Arduino.h \
+ C:/ProgramData/MATLAB/SupportPackages/R2020b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/cores/arduino/binary.h \
+ C:/ProgramData/MATLAB/SupportPackages/R2020b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/cores/arduino/WCharacter.h \
+ C:/ProgramData/MATLAB/SupportPackages/R2020b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/cores/arduino/WString.h \
+ C:/ProgramData/MATLAB/SupportPackages/R2020b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/cores/arduino/HardwareSerial.h \
+ C:/ProgramData/MATLAB/SupportPackages/R2020b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/cores/arduino/Stream.h \
+ C:/ProgramData/MATLAB/SupportPackages/R2020b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/cores/arduino/Print.h \
+ C:/ProgramData/MATLAB/SupportPackages/R2020b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/cores/arduino/Printable.h \
+ C:/ProgramData/MATLAB/SupportPackages/R2020b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/cores/arduino/USBAPI.h \
+ C:/ProgramData/MATLAB/SupportPackages/R2020b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/cores/arduino/Arduino.h \
+ C:/ProgramData/MATLAB/SupportPackages/R2020b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/variants/standard/pins_arduino.h \
+ C:/Users/colpari/DOCUME~1/MATLAB/EPS/PVEMUL~1/closedloop_ert_rtw/rtwtypes.h \
+ C:/PROGRA~1/MATLAB/R2020b/extern/include/tmwtypes.h \
+ C:/PROGRA~1/MATLAB/R2020b/simulink/include/simstruc_types.h \
+ C:/PROGRA~1/MATLAB/R2020b/simulink/include/sl_types_def.h \
+ C:/PROGRA~1/MATLAB/R2020b/simulink/include/rtw_matlogging.h \
+ C:/PROGRA~1/MATLAB/R2020b/simulink/include/rtw_extmode.h \
+ C:/PROGRA~1/MATLAB/R2020b/simulink/include/rtw_continuous.h \
+ C:/PROGRA~1/MATLAB/R2020b/simulink/include/rtw_solver.h \
+ C:/PROGRA~1/MATLAB/R2020b/simulink/include/sysran_types.h \
+ C:/PROGRA~1/MATLAB/R2020b/simulink/include/sl_sample_time_defs.h
+
+C:/ProgramData/MATLAB/SupportPackages/R2020b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/cores/arduino/Arduino.h:
+
+C:/ProgramData/MATLAB/SupportPackages/R2020b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/cores/arduino/binary.h:
+
+C:/ProgramData/MATLAB/SupportPackages/R2020b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/cores/arduino/WCharacter.h:
+
+C:/ProgramData/MATLAB/SupportPackages/R2020b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/cores/arduino/WString.h:
+
+C:/ProgramData/MATLAB/SupportPackages/R2020b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/cores/arduino/HardwareSerial.h:
+
+C:/ProgramData/MATLAB/SupportPackages/R2020b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/cores/arduino/Stream.h:
+
+C:/ProgramData/MATLAB/SupportPackages/R2020b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/cores/arduino/Print.h:
+
+C:/ProgramData/MATLAB/SupportPackages/R2020b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/cores/arduino/Printable.h:
+
+C:/ProgramData/MATLAB/SupportPackages/R2020b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/cores/arduino/USBAPI.h:
+
+C:/ProgramData/MATLAB/SupportPackages/R2020b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/cores/arduino/Arduino.h:
+
+C:/ProgramData/MATLAB/SupportPackages/R2020b/3P.instrset/arduinoide.instrset/hardware/arduino/avr/variants/standard/pins_arduino.h:
+
+C:/Users/colpari/DOCUME~1/MATLAB/EPS/PVEMUL~1/closedloop_ert_rtw/rtwtypes.h:
+
+C:/PROGRA~1/MATLAB/R2020b/extern/include/tmwtypes.h:
+
+C:/PROGRA~1/MATLAB/R2020b/simulink/include/simstruc_types.h:
+
+C:/PROGRA~1/MATLAB/R2020b/simulink/include/sl_types_def.h:
+
+C:/PROGRA~1/MATLAB/R2020b/simulink/include/rtw_matlogging.h:
+
+C:/PROGRA~1/MATLAB/R2020b/simulink/include/rtw_extmode.h:
+
+C:/PROGRA~1/MATLAB/R2020b/simulink/include/rtw_continuous.h:
+
+C:/PROGRA~1/MATLAB/R2020b/simulink/include/rtw_solver.h:
+
+C:/PROGRA~1/MATLAB/R2020b/simulink/include/sysran_types.h:
+
+C:/PROGRA~1/MATLAB/R2020b/simulink/include/sl_sample_time_defs.h:
