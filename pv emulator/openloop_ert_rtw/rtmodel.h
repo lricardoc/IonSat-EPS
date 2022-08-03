@@ -7,9 +7,9 @@
  *
  * Code generation for model "openloop".
  *
- * Model version              : 1.7
+ * Model version              : 1.8
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Tue Aug  2 14:10:24 2022
+ * C source code generated on : Wed Aug  3 16:15:19 2022
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -23,7 +23,7 @@
  * Code generation for Simulink model "openloop".
  *
  * Simulink Coder version                : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Tue Aug  2 14:10:24 2022
+ * C source code generated on : Wed Aug  3 16:15:19 2022
  *
  * Note that the generated code is not dependent on this header file.
  * The file is used in cojuction with the automatic build procedure.
