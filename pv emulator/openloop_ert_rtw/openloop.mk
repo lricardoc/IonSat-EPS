@@ -2,7 +2,7 @@
 ## Makefile generated for component 'openloop'. 
 ## 
 ## Makefile     : openloop.mk
-## Generated on : Tue Aug 02 13:41:27 2022
+## Generated on : Thu Aug 04 09:21:58 2022
 ## Final product: $(RELATIVE_PATH_TO_ANCHOR)/openloop.elf
 ## Product type : executable
 ## 
@@ -21,7 +21,7 @@ MAKEFILE                  = openloop.mk
 MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2020b
 MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2020b/bin
 MATLAB_ARCH_BIN           = $(MATLAB_BIN)/win64
-START_DIR                 = C:/Users/colpari/DOCUME~1/MATLAB/EPS/PVEMUL~1
+START_DIR                 = C:/Users/colpari/DOCUME~1/GitHub/IONSAT~1/PVEMUL~1
 SOLVER                    = 
 SOLVER_OBJ                = 
 CLASSIC_INTERFACE         = 0
@@ -61,7 +61,7 @@ PRODUCT_BIN      = $(RELATIVE_PATH_TO_ANCHOR)/$(PRODUCT_NAME).eep
 ARDUINO_TOOLS    = $(ARDUINO_ROOT)/hardware/tools/avr/bin
 ELF2EEP_OPTIONS  = -O ihex -j .eeprom --set-section-flags=.eeprom=alloc,load --no-change-warnings --change-section-lma .eeprom=0
 DOWNLOAD_ARGS    =  >tmp.trash 2>&1 -P$(ARDUINO_PORT) -V -q -q -q -q -F -C$(ARDUINO_ROOT)/hardware/tools/avr/etc/avrdude.conf -p$(ARDUINO_MCU) -c$(ARDUINO_PROTOCOL) -b$(ARDUINO_BAUD) -D -Uflash:w:
-SLIB_PATH        = C:/Users/colpari/DOCUME~1/MATLAB/R2020b/ARDUIN~1/ARDUIN~1/FASTER~2
+SLIB_PATH        = C:/Users/colpari/DOCUME~1/MATLAB/R2020b/ARDUIN~1/ARDUIN~1/FASTER~1
 
 TOOLCHAIN_SRCS = 
 TOOLCHAIN_INCS = 

@@ -9,7 +9,7 @@
  *
  * Model version              : 1.3
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Tue Aug  2 11:44:46 2022
+ * C source code generated on : Thu Aug  4 17:49:10 2022
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -32,7 +32,6 @@
 #include "rtw_solver.h"
 #include "dt_info.h"
 #include "ext_work.h"
-#include "MW_AnalogIn.h"
 #include "MW_PWM.h"
 #endif                                 /* untitled2_COMMON_INCLUDES_ */
 
@@ -83,53 +82,16 @@
 #define rtmGetTPtr(rtm)                (&(rtm)->Timing.taskTime0)
 #endif
 
-/* Block signals (default storage) */
-typedef struct {
-  real_T DataTypeConversion;           /* '<Root>/Data Type Conversion' */
-  real_T DataTypeConversion1;          /* '<Root>/Data Type Conversion1' */
-} B_untitled2_T;
-
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
-  codertarget_arduinobase_inter_T obj; /* '<Root>/Analog Input2' */
-  codertarget_arduinobase_inter_T obj_h;/* '<Root>/Analog Input' */
-  codertarget_arduinobase_int_i_T obj_p;/* '<Root>/PWM' */
+  codertarget_arduinobase_inter_T obj; /* '<Root>/PWM' */
   boolean_T objisempty;                /* '<Root>/PWM' */
-  boolean_T objisempty_a;              /* '<Root>/Analog Input2' */
-  boolean_T objisempty_g;              /* '<Root>/Analog Input' */
 } DW_untitled2_T;
 
 /* Parameters (default storage) */
 struct P_untitled2_T_ {
-  real_T SliderGain_gain;              /* Mask Parameter: SliderGain_gain
-                                        * Referenced by: '<S1>/Slider Gain'
-                                        */
-  real_T AnalogInput_SampleTime;       /* Expression: -1
-                                        * Referenced by: '<Root>/Analog Input'
-                                        */
-  real_T AnalogInput2_SampleTime;      /* Expression: -1
-                                        * Referenced by: '<Root>/Analog Input2'
-                                        */
-  real_T Constant_Value;               /* Expression: 0
+  real_T Constant_Value;               /* Expression: 128
                                         * Referenced by: '<Root>/Constant'
-                                        */
-  real_T Gain3_Gain;                   /* Expression: 1
-                                        * Referenced by: '<Root>/Gain3'
-                                        */
-  real_T Saturation1_UpperSat;         /* Expression: 0.5
-                                        * Referenced by: '<Root>/Saturation1'
-                                        */
-  real_T Saturation1_LowerSat;         /* Expression: 0
-                                        * Referenced by: '<Root>/Saturation1'
-                                        */
-  real_T Constant1_Value;              /* Expression: 128
-                                        * Referenced by: '<Root>/Constant1'
-                                        */
-  uint16_T Gain_Gain;                  /* Computed Parameter: Gain_Gain
-                                        * Referenced by: '<Root>/Gain'
-                                        */
-  uint16_T Gain1_Gain;                 /* Computed Parameter: Gain1_Gain
-                                        * Referenced by: '<Root>/Gain1'
                                         */
 };
 
@@ -175,9 +137,6 @@ struct tag_RTM_untitled2_T {
 /* Block parameters (default storage) */
 extern P_untitled2_T untitled2_P;
 
-/* Block signals (default storage) */
-extern B_untitled2_T untitled2_B;
-
 /* Block states (default storage) */
 extern DW_untitled2_T untitled2_DW;
 
@@ -206,6 +165,5 @@ extern volatile boolean_T runModel;
  * Here is the system hierarchy for this model
  *
  * '<Root>' : 'untitled2'
- * '<S1>'   : 'untitled2/Slider Gain'
  */
 #endif                                 /* RTW_HEADER_untitled2_h_ */

@@ -2,7 +2,7 @@
 ## Makefile generated for component 'untitled2'. 
 ## 
 ## Makefile     : untitled2.mk
-## Generated on : Tue Aug 02 11:44:51 2022
+## Generated on : Thu Aug 04 17:45:20 2022
 ## Final product: $(RELATIVE_PATH_TO_ANCHOR)/untitled2.elf
 ## Product type : executable
 ## 
@@ -21,7 +21,7 @@ MAKEFILE                  = untitled2.mk
 MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2020b
 MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2020b/bin
 MATLAB_ARCH_BIN           = $(MATLAB_BIN)/win64
-START_DIR                 = C:/Users/colpari/DOCUME~1/MATLAB/EPS/PVEMUL~1
+START_DIR                 = C:/Users/colpari/DOCUME~1/GitHub/IONSAT~1/PVEMUL~1
 SOLVER                    = 
 SOLVER_OBJ                = 
 CLASSIC_INTERFACE         = 0
@@ -141,9 +141,9 @@ ECHO                = echo
 MV                  =
 RUN                 =
 
-#--------------------------------------
-# "Faster Runs" Build Configuration
-#--------------------------------------
+#----------------------------------------
+# "Faster Builds" Build Configuration
+#----------------------------------------
 
 ARFLAGS              = rcs
 ASFLAGS              = -MMD -MP -MF"$(@:%.o=%.dep)" -MT"$@"  \
@@ -162,7 +162,7 @@ CFLAGS               = -std=gnu11  \
                        -MMD \
                        -DARDUINO=10801  \
                        -MMD -MP -MF"$(@:%.o=%.dep)" -MT"$@"  \
-                       -Os
+                       -O0
 CPPFLAGS             = -std=gnu++11 -fpermissive -fno-exceptions -fno-threadsafe-statics  \
                        -c \
                        -w \
@@ -171,7 +171,7 @@ CPPFLAGS             = -std=gnu++11 -fpermissive -fno-exceptions -fno-threadsafe
                        -MMD \
                        -DARDUINO=10801  \
                        -MMD -MP -MF"$(@:%.o=%.dep)" -MT"$@"  \
-                       -Os
+                       -O0
 CPP_LDFLAGS          =  -w -Os -Wl,--gc-sections,--relax
 CPP_SHAREDLIB_LDFLAGS  =
 DOWNLOAD_FLAGS       = $(DOWNLOAD_ARGS)$(PRODUCT_HEX):i
@@ -207,7 +207,7 @@ INCLUDES = $(INCLUDES_BUILDINFO)
 ## DEFINES
 ###########################################################################
 
-DEFINES_ = -D__MW_TARGET_USE_HARDWARE_RESOURCES_H__ -DMW_TIMERID=1 -DMW_PRESCALAR=1024 -DMW_TIMERCOUNT=62411 -DMW_SCHEDULERCOUNTER=1 -D_RTT_BAUDRATE_SERIAL0_=9600 -D_RTT_ANALOG_REF_=0
+DEFINES_ = -D__MW_TARGET_USE_HARDWARE_RESOURCES_H__ -D_MW_ARDUINO_LOOP_=1 -DMW_ARDUINO_STEP_SIZE=200000 -DMW_ARDUINO_MICROS -D_RTT_BAUDRATE_SERIAL0_=9600 -D_RTT_ANALOG_REF_=0
 DEFINES_BUILD_ARGS = -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DEXT_MODE=1 -DONESTEPFCN=1 -DTERMFCN=1 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0
 DEFINES_CUSTOM = 
 DEFINES_OPTS = -DON_TARGET_WAIT_FOR_START=1 -DTID01EQ=0
@@ -220,7 +220,7 @@ DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/MW_AnalogInput.cpp C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/ArduinoPinHandleMap.cpp C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/MW_PWM.cpp C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/MW_PWMDriver.c $(START_DIR)/untitled2_ert_rtw/untitled2.c $(START_DIR)/untitled2_ert_rtw/untitled2_data.c $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/updown.c $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/ext_work.c $(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils/rtiostream_utils.c C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/registry/../src/MW_ArduinoHWInit.cpp C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/io_wrappers.cpp C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/registry/../scheduler/src/arduinoAVRScheduler.cpp $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/rtiostream_interface.c C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/shared/externalmode_daemon/src/ext_svr_daemon.c C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/registry/../src/rtiostream_serial_daemon.cpp C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/shared/externalmode_daemon/src/daemon_checksum.c
+SRCS = C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/MW_PWM.cpp C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/MW_PWMDriver.c C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/ArduinoPinHandleMap.cpp $(START_DIR)/untitled2_ert_rtw/untitled2.c $(START_DIR)/untitled2_ert_rtw/untitled2_data.c $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/updown.c $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/ext_work.c $(MATLAB_ROOT)/toolbox/coder/rtiostream/src/utils/rtiostream_utils.c C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/registry/../src/MW_ArduinoHWInit.cpp C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/io_wrappers.cpp C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/registry/../scheduler/src/arduinoAVRScheduler.cpp $(MATLAB_ROOT)/rtw/c/src/ext_mode/common/rtiostream_interface.c C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/shared/externalmode_daemon/src/ext_svr_daemon.c C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinotarget/registry/../src/rtiostream_serial_daemon.cpp C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/shared/externalmode_daemon/src/daemon_checksum.c
 
 MAIN_SRC = $(START_DIR)/untitled2_ert_rtw/ert_main.c
 
@@ -230,7 +230,7 @@ ALL_SRCS = $(SRCS) $(MAIN_SRC)
 ## OBJECTS
 ###########################################################################
 
-OBJS = MW_AnalogInput.o ArduinoPinHandleMap.o MW_PWM.o MW_PWMDriver.o untitled2.o untitled2_data.o updown.o ext_work.o rtiostream_utils.o MW_ArduinoHWInit.o io_wrappers.o arduinoAVRScheduler.o rtiostream_interface.o ext_svr_daemon.o rtiostream_serial_daemon.o daemon_checksum.o
+OBJS = MW_PWM.o MW_PWMDriver.o ArduinoPinHandleMap.o untitled2.o untitled2_data.o updown.o ext_work.o rtiostream_utils.o MW_ArduinoHWInit.o io_wrappers.o arduinoAVRScheduler.o rtiostream_interface.o ext_svr_daemon.o rtiostream_serial_daemon.o daemon_checksum.o
 
 MAIN_OBJ = ert_main.o
 
@@ -537,20 +537,16 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(LIBS) $(MAIN_OBJ)
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-MW_AnalogInput.o : C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/MW_AnalogInput.cpp
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-ArduinoPinHandleMap.o : C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/ArduinoPinHandleMap.cpp
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
 MW_PWM.o : C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/MW_PWM.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
 MW_PWMDriver.o : C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/MW_PWMDriver.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+ArduinoPinHandleMap.o : C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/ArduinoPinHandleMap.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
 ert_main.o : $(START_DIR)/untitled2_ert_rtw/ert_main.c

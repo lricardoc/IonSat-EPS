@@ -26,7 +26,7 @@ PRODUCT_BIN = $(RELATIVE_PATH_TO_ANCHOR)/$(PRODUCT_NAME).eep
 ARDUINO_TOOLS = $(ARDUINO_ROOT)/hardware/tools/avr/bin
 ELF2EEP_OPTIONS = -O ihex -j .eeprom --set-section-flags=.eeprom=alloc,load --no-change-warnings --change-section-lma .eeprom=0
 DOWNLOAD_ARGS =  >tmp.trash 2>&1 -P$(ARDUINO_PORT) -V -q -q -q -q -F -C$(ARDUINO_ROOT)/hardware/tools/avr/etc/avrdude.conf -p$(ARDUINO_MCU) -c$(ARDUINO_PROTOCOL) -b$(ARDUINO_BAUD) -D -Uflash:w:
-SLIB_PATH = C:/Users/colpari/DOCUME~1/MATLAB/R2020b/ARDUIN~1/ARDUIN~1/FASTER~2
+SLIB_PATH = C:/Users/colpari/DOCUME~1/MATLAB/R2020b/ARDUIN~1/ARDUIN~1/FASTER~1
 
 
 #-------------------------
@@ -164,9 +164,9 @@ SHAREDLIB_LDFLAGS += $(SHAREDLIB_LDFLAGS_SKIPFORSIL)
 ###########################################################################
 SLMKPATH=C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/toolbox/target/SUPPOR~1/ARDUIN~2/STATIC~1
 MODELMK=openloop.mk
-SLIB_PATH=C:/Users/colpari/DOCUME~1/MATLAB/R2020b/ARDUIN~1/ARDUIN~1/FASTER~2
+SLIB_PATH=C:/Users/colpari/DOCUME~1/MATLAB/R2020b/ARDUIN~1/ARDUIN~1/FASTER~1
 VARIANT_HEADER_PATH=$(ARDUINO_ROOT)/hardware/arduino/avr/variants/standard
-ARDUINO_SKETCHBOOK_ROOT=C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/3P778C~1.INS/ARDUIN~3.INS/portable/SKETCH~1/LIBRAR~1
+ARDUINO_SKETCHBOOK_ROOT=C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/3P778C~1.INS/ARDUIN~2.INS/portable/SKETCH~1/LIBRAR~1
 ARDUINO_BASESUPPORTPKG_ROOT=C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/toolbox/target/SUPPOR~1/ARDUIN~2
 
 
@@ -194,6 +194,6 @@ export ARDUINO_BASESUPPORTPKG_ROOT
 .PHONY : all
 all : 
 	@echo "### Generating static library."
-	"$(MAKE)" -j7 -C "$(SLMKPATH)" SHELL="$(SHELL)" -f avrcore.mk all
-	"$(MAKE)" -j7 SHELL="$(SHELL)" -f "$(MODELMK)" all
+	"$(MAKE)" -j9 -C "$(SLMKPATH)" SHELL="$(SHELL)" -f avrcore.mk all
+	"$(MAKE)" -j9 SHELL="$(SHELL)" -f "$(MODELMK)" all
 

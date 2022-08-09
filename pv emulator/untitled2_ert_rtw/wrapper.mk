@@ -80,7 +80,7 @@ MAKE = $(MAKE_PATH)/gmake
 
 
 #--------------------------------------
-# Faster Runs Build Configuration
+# Faster Builds Build Configuration
 #--------------------------------------
 ARFLAGS              = rcs
 ASFLAGS              = -MMD -MP  \
@@ -99,7 +99,7 @@ CFLAGS               = -std=gnu11  \
                        -MMD \
                        -DARDUINO=10801  \
                        -MMD -MP  \
-                       -Os
+                       -O0
 CPPFLAGS             = -std=gnu++11 -fpermissive -fno-exceptions -fno-threadsafe-statics  \
                        -c \
                        -w \
@@ -108,7 +108,7 @@ CPPFLAGS             = -std=gnu++11 -fpermissive -fno-exceptions -fno-threadsafe
                        -MMD \
                        -DARDUINO=10801  \
                        -MMD -MP  \
-                       -Os
+                       -O0
 CPP_LDFLAGS          =  -w -Os -Wl,--gc-sections,--relax
 CPP_SHAREDLIB_LDFLAGS =
 DOWNLOAD_FLAGS       = $(DOWNLOAD_ARGS)$(PRODUCT_HEX):i
@@ -166,7 +166,7 @@ SLMKPATH=C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/toolbox/target/SUPPOR~1/ARDUIN~2/STA
 MODELMK=untitled2.mk
 SLIB_PATH=C:/Users/colpari/DOCUME~1/MATLAB/R2020b/ARDUIN~1/ARDUIN~1/FASTER~2
 VARIANT_HEADER_PATH=$(ARDUINO_ROOT)/hardware/arduino/avr/variants/standard
-ARDUINO_SKETCHBOOK_ROOT=C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/3P778C~1.INS/ARDUIN~3.INS/portable/SKETCH~1/LIBRAR~1
+ARDUINO_SKETCHBOOK_ROOT=C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/3P778C~1.INS/ARDUIN~2.INS/portable/SKETCH~1/LIBRAR~1
 ARDUINO_BASESUPPORTPKG_ROOT=C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/toolbox/target/SUPPOR~1/ARDUIN~2
 
 
@@ -194,6 +194,6 @@ export ARDUINO_BASESUPPORTPKG_ROOT
 .PHONY : all
 all : 
 	@echo "### Generating static library."
-	"$(MAKE)" -j7 -C "$(SLMKPATH)" SHELL="$(SHELL)" -f avrcore.mk all
-	"$(MAKE)" -j7 SHELL="$(SHELL)" -f "$(MODELMK)" all
+	"$(MAKE)" -j9 -C "$(SLMKPATH)" SHELL="$(SHELL)" -f avrcore.mk all
+	"$(MAKE)" -j9 SHELL="$(SHELL)" -f "$(MODELMK)" all
 

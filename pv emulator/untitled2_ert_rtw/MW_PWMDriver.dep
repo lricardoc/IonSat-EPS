@@ -1,7 +1,7 @@
 MW_PWMDriver.o: \
  C:/ProgramData/MATLAB/SupportPackages/R2020b/toolbox/target/supportpackages/arduinobase/src/MW_PWMDriver.c \
  C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/toolbox/target/SUPPOR~1/ARDUIN~2/include/MW_PWMDriver.h \
- C:/Users/colpari/DOCUME~1/MATLAB/EPS/PVEMUL~1/untitled2_ert_rtw/rtwtypes.h \
+ C:/Users/colpari/DOCUME~1/GitHub/IONSAT~1/PVEMUL~1/untitled2_ert_rtw/rtwtypes.h \
  C:/PROGRA~1/MATLAB/R2020b/extern/include/tmwtypes.h \
  C:/PROGRA~1/MATLAB/R2020b/simulink/include/simstruc_types.h \
  C:/PROGRA~1/MATLAB/R2020b/simulink/include/sl_types_def.h \
@@ -18,7 +18,7 @@ MW_PWMDriver.o: \
 
 C:/PROGRA~3/MATLAB/SUPPOR~1/R2020b/toolbox/target/SUPPOR~1/ARDUIN~2/include/MW_PWMDriver.h:
 
-C:/Users/colpari/DOCUME~1/MATLAB/EPS/PVEMUL~1/untitled2_ert_rtw/rtwtypes.h:
+C:/Users/colpari/DOCUME~1/GitHub/IONSAT~1/PVEMUL~1/untitled2_ert_rtw/rtwtypes.h:
 
 C:/PROGRA~1/MATLAB/R2020b/extern/include/tmwtypes.h:
 

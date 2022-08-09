@@ -9,7 +9,7 @@
  *
  * Model version              : 1.3
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Tue Aug  2 11:44:46 2022
+ * C source code generated on : Thu Aug  4 17:49:10 2022
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -27,44 +27,6 @@
 
 /* Custom Type definition for MATLABSystem: '<Root>/PWM' */
 #include "MW_SVD.h"
-#ifndef struct_tag_Gc8EcsaAa6B4PVRJCSARvB
-#define struct_tag_Gc8EcsaAa6B4PVRJCSARvB
-
-struct tag_Gc8EcsaAa6B4PVRJCSARvB
-{
-  MW_Handle_Type MW_ANALOGIN_HANDLE;
-};
-
-#endif                                 /*struct_tag_Gc8EcsaAa6B4PVRJCSARvB*/
-
-#ifndef typedef_f_arduinodriver_ArduinoAnalog_T
-#define typedef_f_arduinodriver_ArduinoAnalog_T
-
-typedef struct tag_Gc8EcsaAa6B4PVRJCSARvB f_arduinodriver_ArduinoAnalog_T;
-
-#endif                               /*typedef_f_arduinodriver_ArduinoAnalog_T*/
-
-#ifndef struct_tag_IH4ZAEwYd2ouei4lGVnLsG
-#define struct_tag_IH4ZAEwYd2ouei4lGVnLsG
-
-struct tag_IH4ZAEwYd2ouei4lGVnLsG
-{
-  boolean_T matlabCodegenIsDeleted;
-  int32_T isInitialized;
-  boolean_T isSetupComplete;
-  f_arduinodriver_ArduinoAnalog_T AnalogInDriverObj;
-  real_T SampleTime;
-};
-
-#endif                                 /*struct_tag_IH4ZAEwYd2ouei4lGVnLsG*/
-
-#ifndef typedef_codertarget_arduinobase_inter_T
-#define typedef_codertarget_arduinobase_inter_T
-
-typedef struct tag_IH4ZAEwYd2ouei4lGVnLsG codertarget_arduinobase_inter_T;
-
-#endif                               /*typedef_codertarget_arduinobase_inter_T*/
-
 #ifndef struct_tag_lMInmD9zWRzKpUCrv0OfsC
 #define struct_tag_lMInmD9zWRzKpUCrv0OfsC
 
@@ -79,12 +41,12 @@ struct tag_lMInmD9zWRzKpUCrv0OfsC
 
 #endif                                 /*struct_tag_lMInmD9zWRzKpUCrv0OfsC*/
 
-#ifndef typedef_codertarget_arduinobase_int_i_T
-#define typedef_codertarget_arduinobase_int_i_T
+#ifndef typedef_codertarget_arduinobase_inter_T
+#define typedef_codertarget_arduinobase_inter_T
 
-typedef struct tag_lMInmD9zWRzKpUCrv0OfsC codertarget_arduinobase_int_i_T;
+typedef struct tag_lMInmD9zWRzKpUCrv0OfsC codertarget_arduinobase_inter_T;
 
-#endif                               /*typedef_codertarget_arduinobase_int_i_T*/
+#endif                               /*typedef_codertarget_arduinobase_inter_T*/
 
 /* Parameters (default storage) */
 typedef struct P_untitled2_T_ P_untitled2_T;

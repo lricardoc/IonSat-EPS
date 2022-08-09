@@ -7,9 +7,9 @@
  *
  * Code generation for model "openloop".
  *
- * Model version              : 1.8
+ * Model version              : 1.9
  * Simulink Coder version : 9.4 (R2020b) 29-Jul-2020
- * C source code generated on : Wed Aug  3 16:15:19 2022
+ * C source code generated on : Thu Aug  4 09:21:51 2022
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -178,10 +178,10 @@ void openloop_initialize(void)
   openloop_M->Timing.stepSize0 = 0.2;
 
   /* External mode info */
-  openloop_M->Sizes.checksums[0] = (929678491U);
-  openloop_M->Sizes.checksums[1] = (3931486814U);
-  openloop_M->Sizes.checksums[2] = (2243856289U);
-  openloop_M->Sizes.checksums[3] = (510101760U);
+  openloop_M->Sizes.checksums[0] = (1110955545U);
+  openloop_M->Sizes.checksums[1] = (1942524069U);
+  openloop_M->Sizes.checksums[2] = (254484282U);
+  openloop_M->Sizes.checksums[3] = (80300889U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
