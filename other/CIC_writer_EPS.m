@@ -2,7 +2,10 @@
 disp('Opening out file');
 
 data.Sun_angle_SA = out.Sun_angle_SA;   %in degrees
-data.Satellite_eclipse = out.eclipse;   %0: 0% eclipse 1: 100% eclipse
+%data.Satellite_eclipse = out.eclipse;   %0: 0% eclipse 1: 100% eclipse
+%data.Satellite_eclipse.Time = out.eclipse.Time;   %0: 0% eclipse 1: 100% eclipse
+%data.Satellite_eclipse.Data = double(out.eclipse.Data);   %0: 0% eclipse 1: 100% eclipse
+data.Satellite_eclipse = out.eclipse1;   %0: 0% eclipse 1: 100% eclipse
 data.Earth_angle = out.Earth_angle;     %in degrees
 data.Altitude = out.alt;                %in Km
 data.Earth_direction_BRF = out.Earth_direction; %cosine director
@@ -45,7 +48,7 @@ fclose(fileID);
 
 %2. SATELLITE ECLIPSE METADATA
 fileID = fopen('./CICData/data_eclipse.txt','w');
-fprintf(fileID,'CIC_MEM_VERS = 1.0\r\n');
+fprintf(fileID,'CIC_MEM_VERS = 2.0\r\n');
 fprintf(fileID,strcat('CREATION_DATE = ',metadata.creationTime,'\r\n'));
 fprintf(fileID,'ORIGINATOR = IONSAT TEAM\r\n');
 fprintf(fileID,'\r\n');
@@ -130,7 +133,7 @@ fprintf(fileID,'\r\n');
 fprintf(fileID,strcat('OBJECT_NAME = ',metadata.objectName,'\r\n'));
 fprintf(fileID,strcat('OBJECT_ID = ',metadata.objectID,'\r\n'));
 fprintf(fileID,strcat('USER_DEFINED_PROTOCOL = ',metadata.userprotocol,'\r\n'));
-fprintf(fileID,strcat('USER_DEFINED_CONTENT = SUN_DIRECTION-SATELLITE-FRAME','\r\n'));
+fprintf(fileID,strcat('USER_DEFINED_CONTENT = SUN_DIRECTION-SATELLITE_FRAME','\r\n'));
 fprintf(fileID,'\r\n');
 fprintf(fileID,strcat('TIME_SYSTEM = ',metadata.timeSystem,'\r\n'));
 fprintf(fileID,'\r\n');
