@@ -24,6 +24,9 @@ function I = pv_math(G,T,Isc,Voc,A,Rs,Rsh,Ns,Np,Ki,Kv,V,i)
     Is = Isc_T/(exp(Voc_T/vt)-1);         % Reverse saturation current Equation(8)
     Iph = Isc_T*(G/1000);                 % Photon current Equation(9)
     
+    if V>Voc_T
+        V=Voc_T;
+    end
     % Single diode model output current Equation(4)
     I = Iph-(Is*(exp((V+(i*Rs))/vt)-1))-((V+(i*Rs))/Rsh);
     I(I < 0) = 0;
