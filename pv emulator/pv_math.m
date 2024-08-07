@@ -28,6 +28,7 @@ function I = pv_math(G,T,Isc,Voc,A,Rs,Rsh,Ns,Np,Ki,Kv,V,i)
         V=Voc_T;
     end
     % Single diode model output current Equation(4)
-    I = Iph-(Is*(exp((V+(i*Rs))/vt)-1))-((V+(i*Rs))/Rsh);
+        I = Iph-(Is*(exp((V+(i*Rs))/vt)-1))-((V+(i*Rs))/Rsh);
+    %I = Np*Iph-Np*Is*(exp(q*(V/Ns+i*Rs/Np)/(k*Tcell*A) )  -1) -(Np*V/Ns+i*Rs)/Rsh ;
     I(I < 0) = 0;
 end
