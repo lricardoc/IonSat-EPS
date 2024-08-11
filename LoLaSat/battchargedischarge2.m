@@ -14,35 +14,38 @@ function [Ibattery] = battchargedischarge2(input)
 iLoads = input(1);
 iACU = input(2);
 I_BD_max= input (3);
-I_BC_max= -input (4);
+I_BC_max= input (4);
 Vbat= input (5);
 
-Vfull=16.8/4;     %full battery charge
-Vmax=16.6/4;      %maximum charge battery
-Vnorm=14/4;       %battery normal voltage
-Vsafe=13.4/4;      %minimum battery safe voltage
-Vcrit=13/4;       %critical battery voltage
+Vfull = 4.2;      %full battery charge
+Vmax = 16.6/4;    %maximum charge battery
+Vnorm = 14/4;     %battery normal voltage
+Vsafe = 3.1;      %minimum battery safe voltage
+Vcrit = 2.8;      %critical battery voltage, DOD=0=>V=2.75
 
 Ibattery = iLoads-iACU;
-if Ibattery>I_BD_max
-    Ibattery=I_BD_max;
-end
-if Ibattery<I_BC_max
-    Ibattery=I_BC_max;
-end
+    if Ibattery>I_BD_max
+        Ibattery=I_BD_max;
+    end
+    if Ibattery<I_BC_max
+        Ibattery=I_BC_max;
+    end
 
-if Vbat>=Vfull && Ibattery<0  %fully charged
-    Ibattery=0;
-end
-if Vbat>Vmax && Ibattery<-0.2  %trickle mode
-    Ibattery=-.2;
-end
-if Vbat<Vcrit && Ibattery>0  %battery failure
-    Ibattery=0;
-end
-if Vbat<Vsafe && Ibattery>0  %battery safe mode
-    Ibattery=-iACU;
-end
-
+    if Vbat>=Vfull && Ibattery<0  %fully charged
+        Ibattery=0;
+    end
+    % 
+    % if Vbat>Vmax && Ibattery<-0.2  %trickle mode
+    %     Ibattery=-.2;
+    % end
+    % 
+    % 
+    % if Vbat<Vsafe && Ibattery>0  %battery safe mode
+    %     Ibattery=-iACU;
+    % end
+    
+    if Vbat<Vcrit && Ibattery>0  %battery failure
+        Ibattery=0;
+    end
 end
 
