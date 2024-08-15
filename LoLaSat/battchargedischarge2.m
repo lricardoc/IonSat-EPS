@@ -31,7 +31,8 @@ Ibattery = iLoads-iACU;
         Ibattery=I_BC_max;
     end
 
-    if Vbat>=Vfull && Ibattery<0  %fully charged
+    %if Vbat>=Vfull && Ibattery<0  %fully charged
+    if Vbat>=Vfull+0.2 && Ibattery<0  %fully charged
         Ibattery=0;
     end
     % 
@@ -48,4 +49,3 @@ Ibattery = iLoads-iACU;
         Ibattery=0;
     end
 end
-
